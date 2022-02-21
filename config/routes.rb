@@ -7,4 +7,6 @@ Rails.application.routes.draw do
 
   get("/users/:a_user", { :controller => "users", :action => "showdetail" })
 
+  get("/photos/:photo_id" ,{:controller => "photos",:action =>"showdetail"})
+
 end
