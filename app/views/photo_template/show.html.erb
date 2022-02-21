@@ -20,14 +20,14 @@
       <input id="edit_photo" type="text" placeholder="Enter a URL of the image..." value="<%= @thephoto.image %>" name="new_img">
 
       <label for="new_caption">Caption</label>
-      <textarea id="new_caption" type="text" placeholder="Enter a caption for ths photo...">Once you've accepted your flaws, no one can use them against you.</textarea>
+      <textarea id="new_caption" type="text" placeholder="Enter a caption for ths photo..."><%= @thephoto.caption %></textarea>
       
       <button>Update photo</button>
     </form>
   </dd>
 
   <dt> Delete photo</dt>
-  <dd> Delete this photo</dd>
+  <dd> <a href="/delete_photo/<%= @thephoto.id %>">Delete this photo</a></dd>
 
 </dl>
 

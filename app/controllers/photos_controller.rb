@@ -20,6 +20,23 @@ class PhotosController < ApplicationController
     end
   end
 
+  def deletephoto
+
+    #  Parameters: {"toast_id"=>"899"}
+
+    the_id = params.fetch("toast_id")
+
+    the_photo = Photo.where({:id => the_id}).at(0)
+
+    the_photo.destroy
+
+    
+    
+    #render({:template => "photo_template/delete.html.erb"})
+    redirect_to("/photos")
+
+  end
+
 
 end
 
