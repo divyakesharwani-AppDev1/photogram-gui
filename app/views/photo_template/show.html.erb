@@ -15,12 +15,12 @@
 
   <dt>Edit photo</dt>
   <dd>
-    <form>
+    <form action="/update_photo/<%= @thephoto.id %>">
       <label for="edit_photo">Image</label>
       <input id="edit_photo" type="text" placeholder="Enter a URL of the image..." value="<%= @thephoto.image %>" name="new_img">
 
       <label for="new_caption">Caption</label>
-      <textarea id="new_caption" type="text" placeholder="Enter a caption for ths photo..."><%= @thephoto.caption %></textarea>
+      <textarea id="new_caption" type="text" placeholder="Enter a caption for ths photo..." name="new_cap"><%= @thephoto.caption %> </textarea>
       
       <button>Update photo</button>
     </form>
@@ -54,12 +54,12 @@
 
 <h3>Add a new comment</h3>
 
-<form>
+<form action="/new_comment">
   <label for="new_comment_photo_id"> Photo ID </label>
-  <input id="new_comment_photo_id" name="new_com_ph_id" value="<%= @thephoto.id %>">
+  <input id="new_comment_photo_id" name="new_com_ph_id" value="<%= @thephoto.id %>" >
 
   <label for="new_comment_author_id"> Author ID </label>
-  <input id="new_comment_author_id" name="new_com_ph_id">
+  <input id="new_comment_author_id" name="new_com_au_id">
 
   <label for="new_comment"> Comment </label>
   <textarea id="new_comment" name="new_com"  placeholder="Enter a comment..."></textarea>

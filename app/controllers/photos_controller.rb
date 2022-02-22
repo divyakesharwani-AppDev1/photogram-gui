@@ -51,8 +51,51 @@ class PhotosController < ApplicationController
     new_photo.save
 
     #render({:template => "photo_template/addphoto.html.erb"})
-    redirect_to("/photos/"+new_photo.id.to_s)
+    new_url ="/photos/"+new_photo.id.to_s
+
+    redirect_to(new_url)
   end
+
+
+  def updatephoto
+    #Parameters: {"new_img"=>"https://www.iitm.ac.in/sites/default/files/styles/img_m4/public/happenings/press_release/pressrelease21_02_2022_17_31.jpg?itok=omVeCSAp", "new_cap"=>"sdf  update2", "photo_id"=>"954"}
+    the_id = params.fetch("photo_id")
+    update_image = params.fetch("new_img")
+    update_caption = params.fetch("new_cap")
+
+
+    matching_photos = Photo.where({:id=>the_id})
+
+    the_photo = matching_photos.at(0)
+    the_photo.image = update_image
+    the_photo.caption = update_caption
+    the_photo.save    
+    
+    
+    #render({:template => "photo_template/updatephoto.html.erb"})
+    update_url = "/photos/"+ the_photo.id.to_s
+    redirect_to(update_url)
+    
+  end
+
+  def newcomment
+    #Parameters: {"new_com_ph_id"=>"777", "new_com_au_id"=>"117", "new_com"=>"sd"}
+
+    newCom_photo_id = params.fetch("new_com_ph_id")
+    newCom_Author_id = params.fetch("new_com_au_id")
+    newComEntry = params.fetch("new_com")
+
+    newCom = Comment.new
+    newCom.photo_id = newCom_photo_id
+    newCom.author_id =newCom_Author_id
+    newCom.body = newComEntry
+    newCom.save
+
+    url_after_new_com = "/photos/"+newCom_photo_id.to_s
+    redirect_to(url_after_new_com)
+    #render({:template => "photo_template/newcomment.html.erb"})
+  end
+
 
 end
 
